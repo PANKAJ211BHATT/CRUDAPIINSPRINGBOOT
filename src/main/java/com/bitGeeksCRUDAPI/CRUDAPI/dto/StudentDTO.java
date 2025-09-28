@@ -1,23 +1,17 @@
-package com.bitGeeksCRUDAPI.CRUDAPI.Model;
+package com.bitGeeksCRUDAPI.CRUDAPI.dto;
 
-
-import jakarta.persistence.*;
+import jakarta.persistence.Version;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 
-@Entity
-@Table(name = "Student")
-public class StudentModel {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class StudentDTO {
     private Long registeration_no;
-
-    @NotBlank(message = "Roll number must not be blank ")
-    private long roll_no;
 
     @NotBlank(message = "Roll number must not be blank ")
     private String name;
 
+    @NotBlank(message = "Roll number must not be blank ")
+    private long roll_no;
     @Email(message = "Email should be valid")
     @NotBlank(message = "Roll number must not be blank ")
     private String email;
@@ -28,27 +22,19 @@ public class StudentModel {
     @Version  // For optimistic locking (concurrency control)
     private Long version;
 
-    public StudentModel() {
+    public StudentDTO() {
     }
-    public StudentModel( Long roll_no, String name, String email, String phone) {
+    public StudentDTO( Long roll_no,long rollNo, String name, String email, String phone) {
         this.roll_no = roll_no;
         this.name = name;
         this.email = email;
-        Phone = phone;
+        this.Phone = phone;
     }
 
 
-    public Long getRegisteration_no() {
+
+    public long getRegisteration_no() {
         return registeration_no;
-    }
-
-
-    public long getRoll_no() {
-        return roll_no;
-    }
-
-    public void setRoll_no(long roll_no) {
-        this.roll_no = roll_no;
     }
 
     public String getName() {
@@ -57,6 +43,14 @@ public class StudentModel {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public long getRoll_no() {
+        return roll_no;
+    }
+
+    public void setRoll_no(long roll_no) {
+        this.roll_no = roll_no;
     }
 
     public String getEmail() {
@@ -75,6 +69,11 @@ public class StudentModel {
         Phone = phone;
     }
 
-    public Long getVersion() { return version; }
-    public void setVersion(Long version) { this.version = version; }
+    public Long getVersion() {
+        return version;
+    }
+
+    public void setVersion(Long version) {
+        this.version = version;
+    }
 }
