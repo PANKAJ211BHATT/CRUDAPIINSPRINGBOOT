@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 
 
 @Service
-public class studentService {
+public class StudentService {
 
     @Autowired
     private StudentRepository studentRepository;
