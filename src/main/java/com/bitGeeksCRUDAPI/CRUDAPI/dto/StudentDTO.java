@@ -3,20 +3,22 @@ package com.bitGeeksCRUDAPI.CRUDAPI.dto;
 import jakarta.persistence.Version;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 public class StudentDTO {
     private Long registeration_no;
 
-    @NotBlank(message = "Roll number must not be blank ")
+    @NotNull(message = "Roll number must not be null")
+    private Long roll_no;
+
+    @NotBlank(message = "Name must not be blank")
     private String name;
 
-    @NotBlank(message = "Roll number must not be blank ")
-    private long roll_no;
     @Email(message = "Email should be valid")
-    @NotBlank(message = "Roll number must not be blank ")
+    @NotBlank(message = "Email must not be blank")
     private String email;
 
-    @NotBlank(message = "Roll number must not be blank ")
+    @NotBlank(message = "Phone must not be blank")
     private String Phone;
 
     @Version  // For optimistic locking (concurrency control)
@@ -24,7 +26,7 @@ public class StudentDTO {
 
     public StudentDTO() {
     }
-    public StudentDTO( Long roll_no,long rollNo, String name, String email, String phone) {
+    public StudentDTO(Long roll_no, String name, String email, String phone) {
         this.roll_no = roll_no;
         this.name = name;
         this.email = email;
@@ -33,8 +35,12 @@ public class StudentDTO {
 
 
 
-    public long getRegisteration_no() {
+    public Long getRegisteration_no() {
         return registeration_no;
+    }
+
+    public void setRegisteration_no(Long registeration_no) {
+        this.registeration_no = registeration_no;
     }
 
     public String getName() {
@@ -45,11 +51,11 @@ public class StudentDTO {
         this.name = name;
     }
 
-    public long getRoll_no() {
+    public Long getRoll_no() {
         return roll_no;
     }
 
-    public void setRoll_no(long roll_no) {
+    public void setRoll_no(Long roll_no) {
         this.roll_no = roll_no;
     }
 

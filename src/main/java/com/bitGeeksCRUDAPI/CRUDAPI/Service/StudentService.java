@@ -53,7 +53,6 @@ public class StudentService {
     }
     private StudentDTO mapToDTO(StudentModel student) {
         return new StudentDTO(
-                student.getRegisteration_no(),
                 student.getRoll_no(),
                 student.getName(),
                 student.getEmail(),
