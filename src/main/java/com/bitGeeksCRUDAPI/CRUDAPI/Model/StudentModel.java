@@ -18,7 +18,7 @@ public class StudentModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "registeration_no", nullable = false, updatable = false)
-    private Long registeration_no;
+    private Long registration_no;
 
     @NotNull(message = "Roll number must not be null")
     private Long roll_no;
@@ -31,7 +31,7 @@ public class StudentModel {
     private String email;
 
     @NotBlank(message = "Phone must not be blank")
-    private String Phone;
+    private String phone;
 
     @Version  // For optimistic locking (concurrency control)
     private Long version;
@@ -43,17 +43,17 @@ public class StudentModel {
         this.roll_no = roll_no;
         this.name = name;
         this.email = email;
-        this.Phone = phone;
+        this.phone = phone;
         this.version = 0L; // Initialize version
     }
 
 
     public Long getRegisteration_no() {
-        return registeration_no;
+        return registration_no;
     }
 
     public void setRegisteration_no(Long registeration_no) {
-        this.registeration_no = registeration_no;
+        this.registration_no = registeration_no;
     }
 
     public Long getRoll_no() {
@@ -81,11 +81,11 @@ public class StudentModel {
     }
 
     public String getPhone() {
-        return Phone;
+        return phone;
     }
 
     public void setPhone(String phone) {
-        Phone = phone;
+        phone = phone;
     }
 
     public Long getVersion() { return version; }
