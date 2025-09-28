@@ -1,6 +1,7 @@
 package com.bitGeeksCRUDAPI.CRUDAPI.Model;
 
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -16,11 +17,11 @@ import jakarta.validation.constraints.NotNull;
 public class StudentModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
+    @Column(name = "registeration_no", nullable = false, updatable = false)
     private Long registeration_no;
 
     @NotNull(message = "Roll number must not be null")
-    private long roll_no;
+    private Long roll_no;
 
     @NotBlank(message = "Name must not be blank")
     private String name;
@@ -37,11 +38,13 @@ public class StudentModel {
 
     public StudentModel() {
     }
-    public StudentModel( Long roll_no, String name, String email, String phone) {
+
+    public StudentModel(Long roll_no, String name, String email, String phone) {
         this.roll_no = roll_no;
         this.name = name;
         this.email = email;
         this.Phone = phone;
+        this.version = 0L; // Initialize version
     }
 
 
@@ -49,12 +52,15 @@ public class StudentModel {
         return registeration_no;
     }
 
+    public void setRegisteration_no(Long registeration_no) {
+        this.registeration_no = registeration_no;
+    }
 
-    public long getRoll_no() {
+    public Long getRoll_no() {
         return roll_no;
     }
 
-    public void setRoll_no(long roll_no) {
+    public void setRoll_no(Long roll_no) {
         this.roll_no = roll_no;
     }
 

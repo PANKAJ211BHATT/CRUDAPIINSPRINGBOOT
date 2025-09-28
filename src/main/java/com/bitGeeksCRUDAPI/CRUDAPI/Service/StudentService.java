@@ -1,14 +1,15 @@
 package com.bitGeeksCRUDAPI.CRUDAPI.Service;
 
-import com.bitGeeksCRUDAPI.CRUDAPI.Model.StudentModel;
-import com.bitGeeksCRUDAPI.CRUDAPI.Repository.StudentRepository;
-import com.bitGeeksCRUDAPI.CRUDAPI.dto.StudentDTO;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.bitGeeksCRUDAPI.CRUDAPI.Model.StudentModel;
+import com.bitGeeksCRUDAPI.CRUDAPI.Repository.StudentRepository;
+import com.bitGeeksCRUDAPI.CRUDAPI.dto.StudentDTO;
 
 
 @Service
@@ -52,12 +53,15 @@ public class StudentService {
         return mapToDTO(savedStudent);
     }
     private StudentDTO mapToDTO(StudentModel student) {
-        return new StudentDTO(
+        StudentDTO dto = new StudentDTO(
                 student.getRoll_no(),
                 student.getName(),
                 student.getEmail(),
                 student.getPhone()
         );
+        dto.setRegisteration_no(student.getRegisteration_no());
+        dto.setVersion(student.getVersion());
+        return dto;
     }
 
     // Helper: DTO to Entity
